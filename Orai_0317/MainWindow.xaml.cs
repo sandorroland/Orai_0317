@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Orai_0317
 {
@@ -16,9 +17,26 @@ namespace Orai_0317
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static List<Pet> pets=new List<Pet>();
         public MainWindow()
         {
             InitializeComponent();
+            LoadPetsFromFile("Pets.txt");
+        }
+        private void LoadPetsFromFile(string fileName)
+        {
+            pets.Clear();
+            string[] sorok=File.ReadAllLines(fileName);
+            for (int i = 1; i < sorok.Length; i++)
+            {
+                pets.Add(new Pet(sorok[i]));
+            }
+        }
+
+        private void Felvetel_Click(object sender, RoutedEventArgs e)
+        {
+            FelvetelWindow felvetelWindow=new FelvetelWindow ();
+            felvetelWindow.ShowDialog();
         }
     }
 }

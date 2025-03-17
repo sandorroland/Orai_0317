@@ -8,6 +8,7 @@ namespace Orai_0317
 {
     class Pet
     {
+        public Pet() { }
         public Pet(string nev, string faj, string fajta, string nem, string szin, DateTime szulDatum, double suly, string etel, string jatek)
         {
             Nev = nev;

@@ -32,6 +32,15 @@ namespace Orai_0317
         private void Felvetel_Click(object sender, RoutedEventArgs e)
         {
             //A kötelező mezők ellenőrzése HF
+            if (string.IsNullOrWhiteSpace(tbxNev.Text) ||
+                string.IsNullOrWhiteSpace(tbxFaj.Text) ||
+                string.IsNullOrWhiteSpace(tbxNem.Text) ||
+                string.IsNullOrWhiteSpace(dpSzulDatum.Text) ||
+                string.IsNullOrWhiteSpace(tbxSuly.Text))
+            {
+                MessageBox.Show("A '*'-gal jelölt mezők kötelezőek!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             //Ha kitöltöttek, akkor példányosítunk egy új kedvencetű
             Pet ujKedvenc=new Pet(tbxNev.Text,tbxFaj.Text,tbxFajta.Text,tbxNem.Text,tbxSzin.Text,DateTime.Parse(dpSzulDatum.Text),int.Parse(tbxSuly.Text),tbxEtel.Text,tbxJatek.Text);
 
